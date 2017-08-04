@@ -1,0 +1,14 @@
+c:\users\dx3\documents\visual studio 2017\Projects\RestauranteEngine\RestauranteEngineTest\bin\Debug\netcoreapp1.1\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+c:\users\dx3\documents\visual studio 2017\Projects\RestauranteEngine\RestauranteEngineTest\bin\Debug\netcoreapp1.1\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+c:\users\dx3\documents\visual studio 2017\Projects\RestauranteEngine\RestauranteEngineTest\bin\Debug\netcoreapp1.1\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+c:\users\dx3\documents\visual studio 2017\Projects\RestauranteEngine\RestauranteEngineTest\bin\Debug\netcoreapp1.1\RestauranteEngineTest.deps.json
+c:\users\dx3\documents\visual studio 2017\Projects\RestauranteEngine\RestauranteEngineTest\bin\Debug\netcoreapp1.1\RestauranteEngineTest.runtimeconfig.json
+c:\users\dx3\documents\visual studio 2017\Projects\RestauranteEngine\RestauranteEngineTest\bin\Debug\netcoreapp1.1\RestauranteEngineTest.runtimeconfig.dev.json
+c:\users\dx3\documents\visual studio 2017\Projects\RestauranteEngine\RestauranteEngineTest\bin\Debug\netcoreapp1.1\RestauranteEngineTest.dll
+c:\users\dx3\documents\visual studio 2017\Projects\RestauranteEngine\RestauranteEngineTest\bin\Debug\netcoreapp1.1\RestauranteEngineTest.pdb
+c:\users\dx3\documents\visual studio 2017\Projects\RestauranteEngine\RestauranteEngineTest\obj\Debug\netcoreapp1.1\RestauranteEngineTest.csprojResolveAssemblyReference.cache
+c:\users\dx3\documents\visual studio 2017\Projects\RestauranteEngine\RestauranteEngineTest\obj\Debug\netcoreapp1.1\RestauranteEngineTest.AssemblyInfo.cs
+c:\users\dx3\documents\visual studio 2017\Projects\RestauranteEngine\RestauranteEngineTest\obj\Debug\netcoreapp1.1\RestauranteEngineTest.dll
+c:\users\dx3\documents\visual studio 2017\Projects\RestauranteEngine\RestauranteEngineTest\obj\Debug\netcoreapp1.1\RestauranteEngineTest.pdb
+C:\Users\dx3\documents\visual studio 2017\Projects\RestauranteEngine\RestauranteEngineTest\bin\Debug\netcoreapp1.1\RestauranteEngine.dll
+C:\Users\dx3\documents\visual studio 2017\Projects\RestauranteEngine\RestauranteEngineTest\bin\Debug\netcoreapp1.1\RestauranteEngine.pdb

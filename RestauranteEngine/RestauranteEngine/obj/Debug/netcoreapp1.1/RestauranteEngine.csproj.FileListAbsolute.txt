@@ -1,0 +1,9 @@
+c:\users\dx3\documents\visual studio 2017\Projects\RestauranteEngine\RestauranteEngine\bin\Debug\netcoreapp1.1\RestauranteEngine.deps.json
+c:\users\dx3\documents\visual studio 2017\Projects\RestauranteEngine\RestauranteEngine\bin\Debug\netcoreapp1.1\RestauranteEngine.runtimeconfig.json
+c:\users\dx3\documents\visual studio 2017\Projects\RestauranteEngine\RestauranteEngine\bin\Debug\netcoreapp1.1\RestauranteEngine.runtimeconfig.dev.json
+c:\users\dx3\documents\visual studio 2017\Projects\RestauranteEngine\RestauranteEngine\bin\Debug\netcoreapp1.1\RestauranteEngine.dll
+c:\users\dx3\documents\visual studio 2017\Projects\RestauranteEngine\RestauranteEngine\bin\Debug\netcoreapp1.1\RestauranteEngine.pdb
+c:\users\dx3\documents\visual studio 2017\Projects\RestauranteEngine\RestauranteEngine\obj\Debug\netcoreapp1.1\RestauranteEngine.csprojResolveAssemblyReference.cache
+c:\users\dx3\documents\visual studio 2017\Projects\RestauranteEngine\RestauranteEngine\obj\Debug\netcoreapp1.1\RestauranteEngine.AssemblyInfo.cs
+c:\users\dx3\documents\visual studio 2017\Projects\RestauranteEngine\RestauranteEngine\obj\Debug\netcoreapp1.1\RestauranteEngine.dll
+c:\users\dx3\documents\visual studio 2017\Projects\RestauranteEngine\RestauranteEngine\obj\Debug\netcoreapp1.1\RestauranteEngine.pdb
