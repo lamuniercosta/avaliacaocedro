@@ -37,22 +37,34 @@ namespace RestauranteEngine.Controllers
         }
 
         // GET api/values/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+        [HttpGet("{name}")]
+        public IActionResult GetByName(string name)
         {
-            return "value";
+            var retorno = repo.Where(x => x.Nome == name).FirstOrDefault();
+            if (retorno == null)
+            {
+                return NotFound();
+            }
+            return Ok(retorno);
         }
-
+               
         // POST api/values
         [HttpPost]
-        public void Post([FromBody]string value)
+        public IActionResult InsertPost([FromBody]Restaurante restaurante)
         {
-        }
+            try
+            {
+                Restaurante rest = new Restaurante();
+                rest.Nome = restaurante.Nome;
+                repo.Save(rest);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.InnerException.Message);
+            }
 
-        // PUT api/values/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
-        {
+            return Ok("Ok");
+
         }
 
         // DELETE api/values/5

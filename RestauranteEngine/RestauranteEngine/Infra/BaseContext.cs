@@ -1,9 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using RestauranteEngine.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace RestauranteEngine.Infra
 {
@@ -15,6 +11,7 @@ namespace RestauranteEngine.Infra
         {
             base.OnModelCreating(modelBuilder);
             new RestauranteMapping(modelBuilder.Entity<Restaurante>());
+            new PratoMapping(modelBuilder.Entity<Prato>());
         }
     }
 }

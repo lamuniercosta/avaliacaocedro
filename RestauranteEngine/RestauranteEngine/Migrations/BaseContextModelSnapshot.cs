@@ -16,6 +16,26 @@ namespace RestauranteEngine.Migrations
                 .HasAnnotation("ProductVersion", "1.1.2")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("RestauranteEngine.Models.Prato", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasMaxLength(100);
+
+                    b.Property<decimal>("Preco");
+
+                    b.Property<int>("RestauranteId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RestauranteId");
+
+                    b.ToTable("Prato");
+                });
+
             modelBuilder.Entity("RestauranteEngine.Models.Restaurante", b =>
                 {
                     b.Property<int>("Id")
@@ -28,6 +48,14 @@ namespace RestauranteEngine.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Restaurante");
+                });
+
+            modelBuilder.Entity("RestauranteEngine.Models.Prato", b =>
+                {
+                    b.HasOne("RestauranteEngine.Models.Restaurante", "restaurante")
+                        .WithMany("pratos")
+                        .HasForeignKey("RestauranteId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
         }
     }

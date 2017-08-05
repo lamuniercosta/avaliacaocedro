@@ -8,7 +8,7 @@ using RestauranteEngine.Infra;
 namespace RestauranteEngine.Migrations
 {
     [DbContext(typeof(BaseContext))]
-    [Migration("20170804180350_RestauranteEngine")]
+    [Migration("20170805134136_RestauranteEngine")]
     partial class RestauranteEngine
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -16,6 +16,26 @@ namespace RestauranteEngine.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.2")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("RestauranteEngine.Models.Prato", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasMaxLength(100);
+
+                    b.Property<decimal>("Preco");
+
+                    b.Property<int>("RestauranteId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RestauranteId");
+
+                    b.ToTable("Prato");
+                });
 
             modelBuilder.Entity("RestauranteEngine.Models.Restaurante", b =>
                 {
@@ -29,6 +49,14 @@ namespace RestauranteEngine.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Restaurante");
+                });
+
+            modelBuilder.Entity("RestauranteEngine.Models.Prato", b =>
+                {
+                    b.HasOne("RestauranteEngine.Models.Restaurante", "restaurante")
+                        .WithMany("pratos")
+                        .HasForeignKey("RestauranteId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
         }
     }

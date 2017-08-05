@@ -8,51 +8,51 @@ using System.Threading.Tasks;
 
 namespace RestauranteEngine.Repositories
 {
-    public class RestauranteRepository : IUnitOfWork<Restaurante>
+    public class PratoRepository : IUnitOfWork<Prato>
     {
         private BaseContext context;
-        private DbSet<Restaurante> entity;
-        public RestauranteRepository(BaseContext context)
+        private DbSet<Prato> entity;
+        public PratoRepository(BaseContext context)
         {
             this.context = context;
-            entity = context.Set<Restaurante>();
+            entity = context.Set<Prato>();
         }
 
-        public int Save(Restaurante model)
+        public int Save(Prato model)
         {
             context.Entry(model).State = EntityState.Added;
             return this.context.SaveChanges();
         }
 
-        public int Update(Restaurante model)
+        public int Update(Prato model)
         {
             context.Entry(model).State = EntityState.Modified;
             return this.context.SaveChanges();
         }
 
-        public void Delete(Restaurante model)
+        public void Delete(Prato model)
         {
-            context.Entry(model).State = EntityState.Deleted;
             entity.Remove(model);
+            context.Entry(model).State = EntityState.Deleted;
             context.SaveChanges();
         }
 
-        public List<Restaurante> GetAll()
+        public List<Prato> GetAll()
         {
             return entity.ToList();
         }
 
-        public Restaurante GetById(object id)
+        public Prato GetById(object id)
         {
             return entity.SingleOrDefault(s => s.Id == (int)id);
         }
 
-        public List<Restaurante> Where(System.Linq.Expressions.Expression<Func<Restaurante, bool>> expression)
+        public List<Prato> Where(System.Linq.Expressions.Expression<Func<Prato, bool>> expression)
         {
             return this.entity.Where(expression).ToList();
         }
 
-        public List<Restaurante> OrderBy(System.Linq.Expressions.Expression<Func<Restaurante, bool>> expression)
+        public List<Prato> OrderBy(System.Linq.Expressions.Expression<Func<Prato, bool>> expression)
         {
             return this.entity.OrderBy(expression).ToList();
         }
