@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using RestauranteEngine.Controllers;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using System.Linq;
 
 namespace RestauranteEngineTest
 {
@@ -42,7 +43,6 @@ namespace RestauranteEngineTest
         public void InsertTest()
         {
             var restaurantes = repo.GetAll();
-            var countInicio = restaurantes.Count;
             foreach (var item in restaurantes)
             {
                 repo.Delete(item);
@@ -55,7 +55,6 @@ namespace RestauranteEngineTest
 
             var countFinal = repo.GetAll().Count;
 
-            Assert.AreEqual(countInicio, countFinal);
             Assert.AreEqual(this.GetRestaurantes().Count, countFinal);
 
         }
@@ -100,7 +99,7 @@ namespace RestauranteEngineTest
             var restaurantesTest = new Restaurante { Nome = "Demo5" };
             var controller = new RestauranteController(db);
 
-            var actionResult = controller.InsertPost(restaurantesTest);
+            var actionResult = controller.InsertRestaurante(restaurantesTest);
             var result = actionResult as OkObjectResult;
 
             Assert.IsNotNull(result);
@@ -114,11 +113,38 @@ namespace RestauranteEngineTest
             var restaurantesTest = new Restaurante();
             var controller = new RestauranteController(db);
 
-            var actionResult = controller.InsertPost(restaurantesTest);
+            var actionResult = controller.InsertRestaurante(restaurantesTest);
             var result = actionResult as BadRequestObjectResult;
 
             Assert.IsNotNull(result);
             Assert.AreEqual(400, result.StatusCode);
+
+        }
+
+        [TestMethod]
+        public void GetRestauranteById()
+        {
+            var controller = new RestauranteController(db);
+            var restauranteTest = repo.Where(r => r.Nome == "Demo1").FirstOrDefault();
+
+            var actionResult = controller.GetById(restauranteTest.Id);
+            var result = actionResult as OkObjectResult;
+
+            Assert.IsNotNull(result);
+            Assert.AreEqual(200, result.StatusCode);
+
+        }
+
+        [TestMethod]
+        public void GetRestauranteByIdFail()
+        {
+            var controller = new RestauranteController(db);
+
+            var actionResult = controller.GetById(1);
+            var result = actionResult as NotFoundResult;
+
+            Assert.IsNotNull(result);
+            Assert.AreEqual(404, result.StatusCode);
 
         }
 
@@ -148,6 +174,72 @@ namespace RestauranteEngineTest
 
         }
 
+        [TestMethod]
+        public void UpdateRestaurante()
+        {
+            var restaurantesTest = repo.Where(r => r.Nome == "Demo3").FirstOrDefault();
+            restaurantesTest.Nome = "Demo6";
+            var controller = new RestauranteController(db);
+
+            var actionResult = controller.UpdateRestaurante(restaurantesTest);
+            var result = actionResult as OkObjectResult;
+
+            Assert.IsNotNull(result);
+            Assert.AreEqual(200, result.StatusCode);
+        }
+
+        [TestMethod]
+        public void UpdateRestauranteFail()
+        {
+            var restaurantesTest = new Restaurante { Nome = "Demo5" };
+            var controller = new RestauranteController(db);
+
+            var actionResult = controller.UpdateRestaurante(restaurantesTest);
+            var result = actionResult as NotFoundResult;
+
+            Assert.IsNotNull(result);
+            Assert.AreEqual(404, result.StatusCode);
+        }
+
+        [TestMethod]
+        public void UpdateRestauranteFail2()
+        {
+            var restaurantesTest = repo.Where(r => r.Nome == "Demo6").FirstOrDefault();
+            restaurantesTest.Nome = null;
+            var controller = new RestauranteController(db);
+
+            var actionResult = controller.UpdateRestaurante(restaurantesTest);
+            var result = actionResult as BadRequestObjectResult;
+
+            Assert.IsNotNull(result);
+            Assert.AreEqual(400, result.StatusCode);
+        }
+
+        [TestMethod]
+        public void DeleteRestaurante()
+        {
+            var restauranteTest = new Restaurante { Nome = "Demo6"};
+            repo.Save(restauranteTest);
+            var controller = new RestauranteController(db);
+
+            var actionResult = controller.DeleteRestaurante(restauranteTest.Id);
+            var result = actionResult as OkObjectResult;
+
+            Assert.IsNotNull(result);
+            Assert.AreEqual(200, result.StatusCode);
+        }
+
+        [TestMethod]
+        public void DeleteRestauranteFail()
+        {
+            var controller = new RestauranteController(db);
+
+            var actionResult = controller.DeleteRestaurante(1);
+            var result = actionResult as NotFoundResult;
+
+            Assert.IsNotNull(result);
+            Assert.AreEqual(404, result.StatusCode);
+        }
 
     }
 }

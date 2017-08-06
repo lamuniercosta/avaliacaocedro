@@ -37,29 +37,79 @@ namespace RestauranteEngine.Controllers
             return await Task.FromResult(repo.GetAll());
         }
 
-        // GET: api/Prato/5
-        [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
+        // GET api/values/5
+        [HttpGet("{id}")]
+        public IActionResult GetById(int id)
         {
-            return "value";
+            var retorno = repo.GetById(id);
+            if (retorno == null)
+            {
+                return NotFound();
+            }
+            return Ok(retorno);
         }
-        
+
         // POST: api/Prato
         [HttpPost]
-        public void Post([FromBody]string value)
+        public IActionResult InsertPrato([FromBody]Prato prato)
         {
+            try
+            {
+                Prato newPrato = new Prato();
+                newPrato.RestauranteId = prato.RestauranteId;
+                newPrato.Nome = prato.Nome;
+                newPrato.Preco = prato.Preco;
+                repo.Save(newPrato);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.InnerException.Message);
+            }
+
+            return Ok("Ok");
         }
-        
-        // PUT: api/Prato/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
+
+        [HttpPost]
+        public IActionResult UpdatePrato([FromBody]Prato prato)
         {
+            try
+            {
+                Prato newPrato = repo.GetById(prato.Id);
+                newPrato.RestauranteId = prato.RestauranteId;
+                newPrato.Nome = prato.Nome;
+                newPrato.Preco = prato.Preco;
+                repo.Update(newPrato);
+            }
+            catch (System.NullReferenceException)
+            {
+                return NotFound();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.InnerException.Message);
+            }
+
+            return Ok("Ok");
         }
-        
+
         // DELETE: api/ApiWithActions/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public IActionResult DeletePrato(int id)
         {
+            try
+            {
+                var newPrato = repo.GetById(id);
+                if (newPrato == null)
+                {
+                    return NotFound();
+                }
+                repo.Delete(newPrato);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.InnerException.Message);
+            }
+            return Ok("Ok");
         }
     }
 }

@@ -16,11 +16,13 @@ namespace RestauranteEngine.Controllers
     {
         private BaseContext db;
         private RestauranteRepository repo;
+        private PratoRepository repoP;
 
         public RestauranteController(BaseContext _db)
         {
             this.db = _db;
             this.repo = new RestauranteRepository(db);
+            this.repoP = new PratoRepository(db);
         }
 
         // GET: api/values
@@ -37,6 +39,18 @@ namespace RestauranteEngine.Controllers
         }
 
         // GET api/values/5
+        [HttpGet("{id}")]
+        public IActionResult GetById(int id)
+        {
+            var retorno = repo.GetById(id);
+            if (retorno == null)
+            {
+                return NotFound();
+            }
+            return Ok(retorno);
+        }
+
+        // GET api/values/5
         [HttpGet("{name}")]
         public IActionResult GetByName(string name)
         {
@@ -47,10 +61,10 @@ namespace RestauranteEngine.Controllers
             }
             return Ok(retorno);
         }
-               
+
         // POST api/values
         [HttpPost]
-        public IActionResult InsertPost([FromBody]Restaurante restaurante)
+        public IActionResult InsertRestaurante([FromBody]Restaurante restaurante)
         {
             try
             {
@@ -64,13 +78,51 @@ namespace RestauranteEngine.Controllers
             }
 
             return Ok("Ok");
+        }
 
+        [HttpPost]
+        public IActionResult UpdateRestaurante([FromBody]Restaurante restaurante)
+        {
+            try
+            {
+                Restaurante rest = repo.GetById(restaurante.Id);
+                rest.Nome = restaurante.Nome;
+                repo.Update(rest);
+            }
+            catch (System.NullReferenceException ex)
+            {
+                return NotFound();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.InnerException.Message);
+            }
+
+            return Ok("Ok");
         }
 
         // DELETE api/values/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public IActionResult DeleteRestaurante(int id)
         {
+            try
+            {
+                var rest = repo.GetById(id);
+                if (rest == null)
+                {
+                    return NotFound();
+                }
+                foreach (var item in repoP.Where(p => p.RestauranteId == id).ToList())
+                {
+                    repoP.Delete(item);
+                }
+                repo.Delete(rest);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.InnerException.Message);
+            }
+            return Ok("Ok");
         }
     }
 }
