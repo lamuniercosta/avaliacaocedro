@@ -12,17 +12,3 @@ c:\users\dx3\documents\visual studio 2017\Projects\RestauranteEngine\Restaurante
 c:\users\dx3\documents\visual studio 2017\Projects\RestauranteEngine\RestauranteEngineTest\obj\Debug\netcoreapp1.1\RestauranteEngineTest.pdb
 C:\Users\dx3\documents\visual studio 2017\Projects\RestauranteEngine\RestauranteEngineTest\bin\Debug\netcoreapp1.1\RestauranteEngine.dll
 C:\Users\dx3\documents\visual studio 2017\Projects\RestauranteEngine\RestauranteEngineTest\bin\Debug\netcoreapp1.1\RestauranteEngine.pdb
-C:\Users\lamunier.costa\Documents\Dev\avaliacaocedro\RestauranteEngine\RestauranteEngineTest\bin\Debug\netcoreapp1.1\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
-C:\Users\lamunier.costa\Documents\Dev\avaliacaocedro\RestauranteEngine\RestauranteEngineTest\bin\Debug\netcoreapp1.1\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
-C:\Users\lamunier.costa\Documents\Dev\avaliacaocedro\RestauranteEngine\RestauranteEngineTest\bin\Debug\netcoreapp1.1\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
-C:\Users\lamunier.costa\Documents\Dev\avaliacaocedro\RestauranteEngine\RestauranteEngineTest\bin\Debug\netcoreapp1.1\RestauranteEngineTest.deps.json
-C:\Users\lamunier.costa\Documents\Dev\avaliacaocedro\RestauranteEngine\RestauranteEngineTest\bin\Debug\netcoreapp1.1\RestauranteEngineTest.runtimeconfig.json
-C:\Users\lamunier.costa\Documents\Dev\avaliacaocedro\RestauranteEngine\RestauranteEngineTest\bin\Debug\netcoreapp1.1\RestauranteEngineTest.runtimeconfig.dev.json
-C:\Users\lamunier.costa\Documents\Dev\avaliacaocedro\RestauranteEngine\RestauranteEngineTest\bin\Debug\netcoreapp1.1\RestauranteEngineTest.dll
-C:\Users\lamunier.costa\Documents\Dev\avaliacaocedro\RestauranteEngine\RestauranteEngineTest\bin\Debug\netcoreapp1.1\RestauranteEngineTest.pdb
-C:\Users\lamunier.costa\Documents\Dev\avaliacaocedro\RestauranteEngine\RestauranteEngineTest\bin\Debug\netcoreapp1.1\RestauranteEngine.dll
-C:\Users\lamunier.costa\Documents\Dev\avaliacaocedro\RestauranteEngine\RestauranteEngineTest\bin\Debug\netcoreapp1.1\RestauranteEngine.pdb
-C:\Users\lamunier.costa\Documents\Dev\avaliacaocedro\RestauranteEngine\RestauranteEngineTest\obj\Debug\netcoreapp1.1\RestauranteEngineTest.csprojResolveAssemblyReference.cache
-C:\Users\lamunier.costa\Documents\Dev\avaliacaocedro\RestauranteEngine\RestauranteEngineTest\obj\Debug\netcoreapp1.1\RestauranteEngineTest.AssemblyInfo.cs
-C:\Users\lamunier.costa\Documents\Dev\avaliacaocedro\RestauranteEngine\RestauranteEngineTest\obj\Debug\netcoreapp1.1\RestauranteEngineTest.dll
-C:\Users\lamunier.costa\Documents\Dev\avaliacaocedro\RestauranteEngine\RestauranteEngineTest\obj\Debug\netcoreapp1.1\RestauranteEngineTest.pdb
