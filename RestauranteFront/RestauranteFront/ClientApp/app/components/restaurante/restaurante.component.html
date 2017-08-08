@@ -1,0 +1,42 @@
+﻿<h1>Consulta de Restaurantes</h1>
+
+<li [routerLinkActive]="['link-active']">
+    <a [routerLink]="['/restaurante',3]">
+        <span class='glyphicon glyphicon-cutlery'></span> Restaurantes
+    </a>
+</li>
+
+<div>
+    <h3>Pesquisar</h3>
+    <form>
+        <div class="form-group">
+            <label for="name">Nome *</label>
+            <input type="text" class="form-control" name="Nome" required>
+        </div>
+        <button type="button" (click)="GetRestaurantes()" class="btn btn-primary">
+            Pesquisar
+        </button>
+    </form>
+</div>
+
+
+<table class='table' *ngIf="restaurantes">
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Temp. (C)</th>
+            <th>Temp. (F)</th>
+            <th>Summary</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let restaurante of restaurantes">
+            <td>{{ restaurante.dateFormatted }}</td>
+            <td>{{ restaurante.temperatureC }}</td>
+            <td>{{ restaurante.temperatureF }}</td>
+            <td>{{ restaurante.summary }}</td>
+            <td>Editar Excluir</td>
+        </tr>
+    </tbody>
+</table>
