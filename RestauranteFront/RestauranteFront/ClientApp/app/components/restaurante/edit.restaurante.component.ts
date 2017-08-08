@@ -2,7 +2,7 @@
 import { Http } from '@angular/http';
 import { RestauranteService, IRestaurante, RestauranteModel } from './restaurante.model';
 import { Location } from '@angular/common';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 
 @Component({
     selector: "editRestaurante",
@@ -12,19 +12,21 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 
 export class EditRestaurante implements OnInit {
     model: RestauranteModel;
-    constructor(private service: RestauranteService, private route: ActivatedRoute, private location: Location)
+    id: number;
+    constructor(private service: RestauranteService, private route: ActivatedRoute, private location: Location, private router: Router)
     { }
 
 
     ngOnInit(): void {
-        this.route.paramMap.switchMap((params: ParamMap) => this.service.GetRestaurante(+params.get('id'))).subscribe(model => this.model = model);
+        this.id = this.route.snapshot.params['id'];
+        this.service.GetRestaurante(this.id).then(model => this.model = model);
     }
 
     SaveRestaurante() {
-        
+        this.service.SaveRestaurante(this.model).then(() => this.goBack());
     }
 
     goBack(): void {
-        this.location.back();
+        this.router.navigate(['/restaurante']);
     }
 }

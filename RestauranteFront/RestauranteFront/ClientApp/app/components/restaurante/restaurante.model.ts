@@ -6,6 +6,7 @@ import 'rxjs/add/operator/toPromise';
 @Injectable()
 export class RestauranteService {
     constructor(private _http: Http) { };
+    private headers = new Headers({ 'Content-Type': 'application/json' });
     private RegenerateData = new Subject<number>();
     RegenerateData$ = this.RegenerateData.asObservable();
 
@@ -16,10 +17,19 @@ export class RestauranteService {
             .catch(this.handleErrorPromise);
     }
 
-    GetRestaurante(id: number): Promise<IRestaurante> {
-        var data = this.LoadData().then(restaurante => restaurante.find(rest => rest.temperatureC === 3)); 
-        data.then(function (result) { alert(result.temperatureC) });
-        return data;
+    GetRestaurante(id: number): Promise<IRestaurante> {        
+        return this._http.get('/api/SampleData/GetWeatherForecast/' + id)
+            .toPromise()
+            .then(response => response.json() as IRestaurante)
+            .catch(this.handleErrorPromise);
+    }
+
+    SaveRestaurante(model: RestauranteModel) {
+        return this._http
+            .post('/api/SampleData/Add', JSON.stringify({ model: model }), { headers: this.headers })
+            .toPromise()
+            .then(res => res.json().data)
+            .catch(this.handleErrorPromise);
     }
 
     protected extractArray(res: Response, showprogress: boolean = true) {
@@ -51,6 +61,7 @@ export class RestauranteService {
 }
 
 export interface IRestaurante {
+    id: number;
     dateFormatted: string;
     temperatureC: number;
     temperatureF: number;
@@ -59,6 +70,7 @@ export interface IRestaurante {
 
 export class RestauranteModel {
     constructor(
+        id: number,
         dateFormatted: string,
         temperatureC: number,
         temperatureF: number,

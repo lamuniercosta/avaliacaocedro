@@ -1,16 +1,11 @@
 ﻿<div>
     <h3>Cadastro de Restaurante</h3>
-    <div *ngIf="model">
-        <div>
-            <label>id: </label>{{model.temperatureC}}
-        </div>
-    </div>
+    <input type="hidden" name="temperatureC" value="{{model.temperatureC}}"/>
         <div class="form-group">
-            <label>id: </label>{{model.temperatureC}}
             <label for="name">Nome *</label>
-            <input type="text" class="form-control" name="dateFormatted" required />
+            <input type="text" class="form-control" [(ngModel)]="model.dateFormatted" required/>
         </div>
-        <button (click)="goBack()" class="btn btn-secondary">Cancelar</button>
+        <button (click)="goBack()" class="btn btn-default">Cancelar</button>
 
         <button type="button" (click)="SaveRestaurante()" ng-disabled="" class="btn btn-primary">Salvar</button>
     </div>

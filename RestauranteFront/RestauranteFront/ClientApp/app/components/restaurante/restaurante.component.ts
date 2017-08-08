@@ -10,7 +10,7 @@ import { RestauranteService, IRestaurante, RestauranteModel } from './restaurant
 
 export class Restaurante {
 
-    model = new RestauranteModel('', 0, 0, '');
+    model = new RestauranteModel(0,'', 0, 0, '');
     constructor(private service: RestauranteService) {
 
     }

@@ -26,7 +26,7 @@ export const sharedConfig: NgModule = {
             { path: '', redirectTo: 'home', pathMatch: 'full' },
             { path: 'home', component: HomeComponent },
             { path: 'restaurante', component: Restaurante },
-            { path: 'restaurante/:id', component: EditRestaurante },
+            { path: 'editrestaurante/:id', component: EditRestaurante },
             { path: 'counter', component: CounterComponent },
             { path: 'fetch-data', component: FetchDataComponent },
             { path: '**', redirectTo: 'home' }
