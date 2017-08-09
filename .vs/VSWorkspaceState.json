@@ -1,6 +1,12 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\RestauranteFront",
+    "\\RestauranteFront\\RestauranteFront",
+    "\\RestauranteFront\\RestauranteFront\\ClientApp",
+    "\\RestauranteFront\\RestauranteFront\\ClientApp\\dist",
+    "\\RestauranteFront\\RestauranteFront\\ClientApp\\test"
   ],
+  "SelectedNode": "\\RestauranteFront\\RestauranteFront\\ClientApp\\dist\\vendor-manifest.json",
   "PreviewInSolutionExplorer": false
 }
