@@ -6,12 +6,14 @@ using Microsoft.AspNetCore.Mvc;
 using RestauranteEngine.Models;
 using RestauranteEngine.Repositories;
 using RestauranteEngine.Infra;
+using Microsoft.AspNetCore.Cors;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace RestauranteEngine.Controllers
 {
     [Route("api/[controller]")]
+    [EnableCors("SiteCorsPolicy")]
     public class RestauranteController : Controller
     {
         private BaseContext db;
@@ -26,6 +28,7 @@ namespace RestauranteEngine.Controllers
         }
 
         // GET: api/values
+        [Route("/api/Restaurante/GetRestaurantes/")]
         [HttpGet]
         public List<Restaurante> GetRestaurantes()
         {
@@ -51,7 +54,8 @@ namespace RestauranteEngine.Controllers
         }
 
         // GET api/values/5
-        [HttpGet("{name}")]
+        [Route("/api/Restaurante/GetByName/{name}")]
+        [HttpGet]
         public IActionResult GetByName(string name)
         {
             var retorno = repo.Where(x => x.Nome == name).FirstOrDefault();
@@ -63,7 +67,7 @@ namespace RestauranteEngine.Controllers
         }
 
         // POST api/values
-        [HttpPost]
+        [HttpPost("[action]")]
         public IActionResult InsertRestaurante([FromBody]Restaurante restaurante)
         {
             try
@@ -80,7 +84,7 @@ namespace RestauranteEngine.Controllers
             return Ok("Ok");
         }
 
-        [HttpPost]
+        [HttpPost("[action]")]
         public IActionResult UpdateRestaurante([FromBody]Restaurante restaurante)
         {
             try
@@ -102,8 +106,8 @@ namespace RestauranteEngine.Controllers
         }
 
         // DELETE api/values/5
-        [HttpDelete("{id}")]
-        public IActionResult DeleteRestaurante(int id)
+        [HttpPost("[action]")]
+        public IActionResult DeleteRestaurante([FromBody]int id)
         {
             try
             {

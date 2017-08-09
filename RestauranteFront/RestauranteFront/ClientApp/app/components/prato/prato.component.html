@@ -1,10 +1,35 @@
-﻿<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <title></title>
-</head>
-<body>
+﻿<h1>Consulta de Pratos</h1>
 
-</body>
-</html>
+<span [routerLinkActive]="['link-active']">
+    <a [routerLink]="['/editprato',0]">
+        <span class='glyphicon glyphicon-plus-sign'></span> Cadastrar Novo Prato
+    </a>
+</span>
+
+<div [innerHtml]=message></div>
+<table class='table' *ngIf="pratos">
+    <thead>
+        <tr>
+            <th>Restaurante</th>
+            <th>Nome</th>
+            <th>Preço</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let prato of pratos">
+            <td>
+                <span [routerLinkActive]="['link-active']">
+                    <a [routerLink]="['/editrestaurante',prato.restauranteId]">{{ prato.restauranteId  }}
+                    </a>
+                </span>
+            </td>
+            <td>{{ prato.nome }}</td>
+            <td>{{ prato.preco }}</td>
+            <td>
+                <p class="btn btn-default" (click)="EditPrato(prato.id)"><span class='glyphicon glyphicon-edit'></span> Editar</p>
+                <p class="btn btn-default" (click)="DeletePrato(prato.id)"><span class='glyphicon glyphicon-trash'></span> Excluir</p>
+            </td>
+        </tr>
+    </tbody>
+</table>

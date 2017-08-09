@@ -11,6 +11,7 @@ using RestauranteEngine.Infra;
 using Microsoft.EntityFrameworkCore;
 using RestauranteEngine.Repositories;
 using RestauranteEngine.Models;
+using Microsoft.AspNetCore.Cors.Infrastructure;
 
 namespace RestauranteEngine
 {
@@ -35,7 +36,16 @@ namespace RestauranteEngine
             services.AddMvc();
             services.AddDbContext<BaseContext>(opts => opts.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddTransient<IUnitOfWork<Restaurante>, RestauranteRepository>();
+            var corsBuilder = new CorsPolicyBuilder();
+            corsBuilder.AllowAnyHeader();
+            corsBuilder.AllowAnyMethod();
+            corsBuilder.AllowAnyOrigin(); // For anyone access.
+            corsBuilder.AllowCredentials();
 
+            services.AddCors(options =>
+            {
+                options.AddPolicy("SiteCorsPolicy", corsBuilder.Build());
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -45,6 +55,7 @@ namespace RestauranteEngine
             loggerFactory.AddDebug();
 
             app.UseMvc();
+            app.UseCors("SiteCorsPolicy");
         }
     }
 }

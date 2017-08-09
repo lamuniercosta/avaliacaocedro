@@ -1,11 +1,18 @@
 ﻿<div>
     <h3>Cadastro de Restaurante</h3>
-    <input type="hidden" name="temperatureC" value="{{model.temperatureC}}"/>
+    <div [innerHtml]=message></div>
+    <form (ngSubmit)="SaveRestaurante()" #restForm="ngForm">
+        <input type="hidden" name="id" value="{{model.id}}" />
         <div class="form-group">
             <label for="name">Nome *</label>
-            <input type="text" class="form-control" [(ngModel)]="model.dateFormatted" required/>
-        </div>
+            <input type="text" class="form-control" [(ngModel)]="model.nome" name="nome" required #nome="ngModel"/>
+            <div [hidden]="nome.valid || nome.pristine"
+                 class="alert alert-danger">
+                Campo nome é obrigatório
+            </div>
+            </div>
         <button (click)="goBack()" class="btn btn-default">Cancelar</button>
 
-        <button type="button" (click)="SaveRestaurante()" ng-disabled="" class="btn btn-primary">Salvar</button>
-    </div>
+        <button type="submit" [disabled]="!restForm.form.valid" class="btn btn-primary">Salvar</button>
+        </form>
+</div>

@@ -7,11 +7,13 @@ using Microsoft.AspNetCore.Mvc;
 using RestauranteEngine.Infra;
 using RestauranteEngine.Repositories;
 using RestauranteEngine.Models;
+using Microsoft.AspNetCore.Cors;
 
 namespace RestauranteEngine.Controllers
 {
     [Produces("application/json")]
     [Route("api/Prato")]
+    [EnableCors("SiteCorsPolicy")]
     public class PratoController : Controller
     {
         private BaseContext db;
@@ -25,6 +27,7 @@ namespace RestauranteEngine.Controllers
             this.repo = new PratoRepository(db);
         }
         // GET: api/Prato
+        [Route("/api/Prato/GetPratos")]
         [HttpGet]
         public List<Prato> GetPratos()
         {
@@ -50,7 +53,7 @@ namespace RestauranteEngine.Controllers
         }
 
         // POST: api/Prato
-        [HttpPost]
+        [HttpPost("[action]")]
         public IActionResult InsertPrato([FromBody]Prato prato)
         {
             try
@@ -69,7 +72,7 @@ namespace RestauranteEngine.Controllers
             return Ok("Ok");
         }
 
-        [HttpPost]
+        [HttpPost("[action]")]
         public IActionResult UpdatePrato([FromBody]Prato prato)
         {
             try
@@ -93,8 +96,8 @@ namespace RestauranteEngine.Controllers
         }
 
         // DELETE: api/ApiWithActions/5
-        [HttpDelete("{id}")]
-        public IActionResult DeletePrato(int id)
+        [HttpPost("[action]")]
+        public IActionResult DeletePrato([FromBody]int id)
         {
             try
             {

@@ -2,41 +2,43 @@
 
 <span [routerLinkActive]="['link-active']">
     <a [routerLink]="['/editrestaurante',0]">
-        <span class='glyphicon glyphicon-plus-sign'></span> Restaurantes
+        <span class='glyphicon glyphicon-plus-sign'></span> Cadastrar Novo Restaurante
     </a>
 </span>
 
 <div>
     <h3>Pesquisar</h3>
-    <form>
+    <form #restForm="ngForm">
         <div class="form-group">
             <label for="name">Nome *</label>
-            <input type="text" class="form-control" name="Nome" required>
+            <input type="text" class="form-control" [(ngModel)]="model.summary" required name="Summary" #nome="ngModel">
+            <div [hidden]="nome.valid || nome.pristine"
+                 class="alert alert-danger">
+                Campo nome é obrigatório
+            </div>
         </div>
-        <button type="button" (click)="GetRestaurantes()" class="btn btn-primary">
+        <button type="button" [disabled]="!restForm.form.valid" (click)="GetRestaurantes(model.summary)" class="btn btn-primary">
             Pesquisar
         </button>
+
     </form>
 </div>
 
-
+<div [innerHtml]=message></div>
 <table class='table' *ngIf="restaurantes">
     <thead>
         <tr>
-            <th>Date</th>
-            <th>Temp. (C)</th>
-            <th>Temp. (F)</th>
-            <th>Summary</th>
+            <th>Restaurante</th>
             <th></th>
         </tr>
     </thead>
     <tbody>
         <tr *ngFor="let restaurante of restaurantes">
-            <td>{{ restaurante.dateFormatted }}</td>
-            <td>{{ restaurante.temperatureC }}</td>
-            <td>{{ restaurante.temperatureF }}</td>
-            <td>{{ restaurante.summary }}</td>
-            <td>Editar Excluir</td>
+            <td>{{ restaurante.nome }}</td>
+            <td>
+               <p class="btn btn-default" (click)="EditRestaurante(restaurante.id)"><span class='glyphicon glyphicon-edit'></span> Editar</p>
+                <p class="btn btn-default" (click)="DeleteRestaurante(restaurante.id)"><span class='glyphicon glyphicon-trash'></span> Excluir</p>
+            </td>
         </tr>
     </tbody>
 </table>

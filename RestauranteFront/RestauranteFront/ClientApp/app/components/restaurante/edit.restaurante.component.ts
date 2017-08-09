@@ -13,17 +13,32 @@ import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 export class EditRestaurante implements OnInit {
     model: RestauranteModel;
     id: number;
-    constructor(private service: RestauranteService, private route: ActivatedRoute, private location: Location, private router: Router)
+    message: string;
+    constructor(private service: RestauranteService, private route: ActivatedRoute, private router: Router)
     { }
 
 
     ngOnInit(): void {
         this.id = this.route.snapshot.params['id'];
-        this.service.GetRestaurante(this.id).then(model => this.model = model);
+        
+        if (this.id > 0) {
+            this.model = this.service.GetRestaurante(this.id).then(model=> this.model = model);
+        }
+        else {
+            this.model = new RestauranteModel(0,'');
+        }
+        
     }
 
     SaveRestaurante() {
-        this.service.SaveRestaurante(this.model).then(() => this.goBack());
+        this.service.SaveRestaurante(this.id, this.model).subscribe((response) => {
+            if (response.status == 200) {
+                this.goBack()
+            }
+            else {
+                this.message = '<div class="alert alert-danger" role="alert">' + response.text()+'</div>';
+            }
+           });
     }
 
     goBack(): void {

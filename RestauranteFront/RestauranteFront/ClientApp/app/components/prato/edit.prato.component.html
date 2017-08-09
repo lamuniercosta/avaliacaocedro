@@ -1,0 +1,35 @@
+﻿<div>
+    <h3>Cadastro de Prato</h3>
+    <div [innerHtml]=message></div>
+    <form (ngSubmit)="SavePrato()" #pratoForm="ngForm">
+        <input type="hidden" name="id" value="{{model.id}}" />
+        <div class="form-group">
+            <label for="restauranteid">Restaurante *</label>
+            <select [(ngModel)]="model.restauranteId" name="restauranteId" required  #restauranteId="ngModel" class="form-control">
+                <option value="0"></option>
+                <option *ngFor="let rest of restaurantes"
+                        value={{rest.id}}>{{rest.nome}}
+                </option>  
+            </select>
+            <div [hidden]="restauranteId.valid || restauranteId.pristine"
+                 class="alert alert-danger">
+                Campo restaurante é obrigatório
+            </div>
+            <label for="name">Nome *</label>
+            <input type="text" class="form-control" [(ngModel)]="model.nome" name="nome" required #nome="ngModel"/>
+            <div [hidden]="nome.valid || nome.pristine"
+                 class="alert alert-danger">
+                Campo nome é obrigatório
+            </div>
+            <label for="name">Preço *</label>
+            <input type="text" class="form-control" [(ngModel)]="model.preco" name="preco" required #preco="ngModel" />
+            <div [hidden]="preco.valid || preco.pristine"
+                 class="alert alert-danger">
+                Campo preço é obrigatório
+            </div>
+            </div>
+        <button (click)="goBack()" class="btn btn-default">Cancelar</button>
+
+        <button type="submit" [disabled]="!pratoForm.form.valid" class="btn btn-primary">Salvar</button>
+        </form>
+</div>

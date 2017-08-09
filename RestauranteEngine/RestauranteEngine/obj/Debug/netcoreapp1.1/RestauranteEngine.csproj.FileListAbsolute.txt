@@ -15,3 +15,4 @@ C:\Users\lamunier.costa\Documents\Dev\avaliacaocedro\RestauranteEngine\Restauran
 C:\Users\lamunier.costa\Documents\Dev\avaliacaocedro\RestauranteEngine\RestauranteEngine\obj\Debug\netcoreapp1.1\RestauranteEngine.AssemblyInfo.cs
 C:\Users\lamunier.costa\Documents\Dev\avaliacaocedro\RestauranteEngine\RestauranteEngine\obj\Debug\netcoreapp1.1\RestauranteEngine.dll
 C:\Users\lamunier.costa\Documents\Dev\avaliacaocedro\RestauranteEngine\RestauranteEngine\obj\Debug\netcoreapp1.1\RestauranteEngine.pdb
+C:\Users\lamunier.costa\Documents\Dev\avaliacaocedro\RestauranteEngine\RestauranteEngine\obj\Debug\netcoreapp1.1\RestauranteEngine.csprojResolveAssemblyReference.cache

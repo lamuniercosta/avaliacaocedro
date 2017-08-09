@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { sharedConfig } from './app.module.shared';
 import { RestauranteService } from './components/restaurante/restaurante.model';
+import { PratoService } from './components/prato/prato.model';
 
 @NgModule({
     bootstrap: sharedConfig.bootstrap,
@@ -13,10 +14,12 @@ import { RestauranteService } from './components/restaurante/restaurante.model';
         FormsModule,
         HttpModule,
         ...sharedConfig.imports
+
     ],
     providers: [
         { provide: 'ORIGIN_URL', useValue: location.origin },
-        RestauranteService
+        RestauranteService,
+        PratoService
     ]
 })
 export class AppModule {
